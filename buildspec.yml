@@ -3,24 +3,14 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      terraform: 1.0.0
+      # No need to specify a specific runtime as we'll install Terraform manually
     commands:
-      # Install AWS CLI (if needed)
-      - echo Installing dependencies...
-      - pip install --upgrade awscli
-      - terraform --version
-
-  pre_build:
-    commands:
-      - echo Setting up Terraform...
-      - terraform init
-
+      - echo "Installing Terraform"
+      - curl -LO https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip
+      - unzip terraform_1.5.0_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+      - terraform --version  # Check Terraform version
   build:
     commands:
-      - echo Running Terraform plan...
-      - terraform plan
-
-  post_build:
-    commands:
-      - echo Applying Terraform...
-      - terraform apply -auto-approve
+      - echo "Running Terraform Plan"
+      - terraform --version

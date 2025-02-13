@@ -27,6 +27,8 @@ phases:
     commands:
       # Example command to deploy to the EKS cluster
       - echo "Deploying to EKS"
+      - docker --version
+      - aws --version
       # - kubectl apply -f k8s/deployment.yaml  # Adjust this to your service definition
       # - kubectl apply -f k8s/service.yaml     # Adjust this to your service definition
       # - kubectl rollout status deployment/my-deployment  # Optionally wait for deployment to complete

@@ -33,6 +33,8 @@ phases:
       # - kubectl apply -f k8s/deployment.yaml  # Adjust this to your service definition
       # - kubectl apply -f k8s/service.yaml     # Adjust this to your service definition
       # - kubectl rollout status deployment/my-deployment  # Optionally wait for deployment to complete
+      - aws configure set region us-east-2
+      - aws stepfunctions update-state-machine --state-machine-arn "arn:aws:states:us-east-2:264852106485:stateMachine:Indus-test" --definition file://new_state_machine_definition.json
 
   post_build:
     commands:

@@ -6,13 +6,13 @@ phases:
       nodejs: 14
     commands:
       # Install dependencies
-      - echo "Installing dependencies"
-      - sudo apt-get update -y
-      - sudo apt-get install -y unzip curl
-      - echo "Installing kubectl"
-      - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-      - chmod +x ./kubectl
-      - sudo mv ./kubectl /usr/local/bin/kubectl
+      # - echo "Installing dependencies"
+      # - sudo apt-get update -y
+      # - sudo apt-get install -y unzip curl
+      # - echo "Installing kubectl"
+      # - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+      # - chmod +x ./kubectl
+      # - sudo mv ./kubectl /usr/local/bin/kubectl
       - kubectl version --client
 
   pre_build:
@@ -33,9 +33,6 @@ phases:
       # - kubectl apply -f k8s/deployment.yaml  # Adjust this to your service definition
       # - kubectl apply -f k8s/service.yaml     # Adjust this to your service definition
       # - kubectl rollout status deployment/my-deployment  # Optionally wait for deployment to complete
-      - aws configure set region us-east-2
-      - aws stepfunctions update-state-machine --state-machine-arn "arn:aws:states:us-east-2:264852106485:stateMachine:Indus-test" --definition file://new_state_machine_definition.json
-
   post_build:
     commands:
       - echo "Deployment complete" && ls

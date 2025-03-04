@@ -41,7 +41,7 @@ phases:
       
   post_build:
     commands:
-      - echo "Deployment complete" && ls
+      - echo "Deployment complete"
 
 # artifacts:
 #   files:
